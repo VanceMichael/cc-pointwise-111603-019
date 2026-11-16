@@ -1,0 +1,9 @@
+[
+  {
+    "id": "issued-1",
+    "issuedAt": "2026-11-16T08:30:00Z",
+    "observationId": "s1-08",
+    "calibration": "c1",
+    "value": 2
+  }
+]

@@ -1,0 +1,9 @@
+[
+  {
+    "version": "c1",
+    "source": "sensor",
+    "metric": "rainfall-total",
+    "multiplier": 1,
+    "unit": "mm"
+  }
+]

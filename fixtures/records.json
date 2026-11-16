@@ -1,20 +1,20 @@
 [
   {
-    "sourceId": "weather-observations-demo-1",
-    "source": "sample-source",
-    "observedAt": "2026-11-16T09:00:00Z",
-    "label": "气象观测",
+    "sourceId": "s1-08",
+    "source": "农业气象采集台",
+    "observedAt": "2026-11-16T08:00:00Z",
+    "label": "S1",
     "attributes": {
-      "sample": true
-    }
-  },
-  {
-    "sourceId": "weather-observations-demo-2",
-    "source": "sample-source",
-    "observedAt": "2026-11-16T09:05:00Z",
-    "label": "气象观测 2",
-    "attributes": {
-      "sample": true
+      "observationId": "s1-08",
+      "source": "sensor",
+      "station": "S1",
+      "intervalEnd": "2026-11-16T08:00:00Z",
+      "durationMinutes": 60,
+      "metric": "rainfall-total",
+      "value": 2,
+      "unit": "mm",
+      "calibration": "c1",
+      "state": "active"
     }
   }
 ]
