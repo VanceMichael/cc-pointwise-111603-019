@@ -1,0 +1,20 @@
+[
+  {
+    "sourceId": "weather-observations-demo-1",
+    "source": "sample-source",
+    "observedAt": "2026-11-16T09:00:00Z",
+    "label": "气象观测",
+    "attributes": {
+      "sample": true
+    }
+  },
+  {
+    "sourceId": "weather-observations-demo-2",
+    "source": "sample-source",
+    "observedAt": "2026-11-16T09:05:00Z",
+    "label": "气象观测 2",
+    "attributes": {
+      "sample": true
+    }
+  }
+]
