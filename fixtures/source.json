@@ -23,6 +23,27 @@
           },
           "etag": "\"opening\""
         },
+        "/weather/sensor-2": {
+          "contentType": "application/json",
+          "body": {
+            "items": [
+              {
+                "observationId": "s2-08",
+                "source": "sensor",
+                "station": "S1",
+                "intervalEnd": "2026-11-16T08:00:00Z",
+                "durationMinutes": 60,
+                "metric": "rainfall-total",
+                "value": 2.4,
+                "unit": "mm",
+                "calibration": "c1",
+                "state": "active"
+              }
+            ],
+            "next": null
+          },
+          "etag": "\"opening-s2\""
+        },
         "/weather/public": {
           "contentType": "application/json",
           "body": {
@@ -67,6 +88,93 @@
             "next": null
           },
           "etag": "\"updated\""
+        },
+        "/weather/sensor-2": {
+          "contentType": "application/json",
+          "body": {
+            "items": [
+              {
+                "observationId": "s2-08",
+                "source": "sensor",
+                "station": "S1",
+                "intervalEnd": "2026-11-16T08:00:00Z",
+                "durationMinutes": 60,
+                "metric": "rainfall-total",
+                "value": null,
+                "unit": "mm",
+                "calibration": "c2",
+                "state": "withdrawn"
+              }
+            ],
+            "next": null
+          },
+          "etag": "\"updated-s2\""
+        },
+        "/weather/public": {
+          "contentType": "application/json",
+          "body": {
+            "items": [
+              {
+                "observationId": "p1-08",
+                "source": "web",
+                "station": "S1",
+                "intervalEnd": "2026-11-16T08:00:00Z",
+                "durationMinutes": 60,
+                "metric": "rainfall-estimate",
+                "value": 3,
+                "unit": "mm",
+                "calibration": null,
+                "state": "active"
+              }
+            ],
+            "next": null
+          }
+        }
+      }
+    },
+    "backup": {
+      "routes": {
+        "/weather/sensor-1": {
+          "contentType": "application/json",
+          "body": {
+            "items": [
+              {
+                "observationId": "s1-08",
+                "source": "sensor",
+                "station": "S1",
+                "intervalEnd": "2026-11-16T08:00:00Z",
+                "durationMinutes": 60,
+                "metric": "rainfall-total",
+                "value": null,
+                "unit": "mm",
+                "calibration": "c2",
+                "state": "withdrawn"
+              }
+            ],
+            "next": null
+          },
+          "etag": "\"backup\""
+        },
+        "/weather/sensor-2": {
+          "contentType": "application/json",
+          "body": {
+            "items": [
+              {
+                "observationId": "s2-08",
+                "source": "sensor",
+                "station": "S1",
+                "intervalEnd": "2026-11-16T08:00:00Z",
+                "durationMinutes": 60,
+                "metric": "rainfall-total",
+                "value": 2.5,
+                "unit": "mm",
+                "calibration": "c2",
+                "state": "active"
+              }
+            ],
+            "next": null
+          },
+          "etag": "\"backup-s2\""
         },
         "/weather/public": {
           "contentType": "application/json",
