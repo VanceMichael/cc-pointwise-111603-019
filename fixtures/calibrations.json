@@ -5,5 +5,13 @@
     "metric": "rainfall-total",
     "multiplier": 1,
     "unit": "mm"
+  },
+  {
+    "version": "c2",
+    "source": "sensor",
+    "metric": "rainfall-total",
+    "multiplier": 1.1,
+    "unit": "mm",
+    "effectiveFrom": "2026-11-16T00:00:00Z"
   }
 ]

@@ -7,7 +7,10 @@
     "test": "node --test",
     "start": "node src/cli.js",
     "demo": "node src/demo.js",
-    "acceptance": "node src/acceptance.js"
+    "acceptance": "node src/acceptance.js",
+    "rainfall:demo": "node src/rainfall/demo.js",
+    "rainfall:acceptance": "node src/rainfall/acceptance.js",
+    "rainfall": "node src/rainfall/cli.js"
   },
   "engines": {
     "node": ">=22"

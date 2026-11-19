@@ -13,3 +13,16 @@ Node.js 本地数据接入项目。已有一次来源读取、结构化导入与
 状态目录属于运行产物。扩展导入时应保留现有 CLI 和现有集合查询能力；新增状态可以另行组织。测试可直接使用随机端口来源，不需要等待真实时间或接入外网。运行录制可用 test 和 demo，无需安装浏览器或外部数据库。
 
 `npm start` 或 `npm start -- --help` 查看命令；原导入和查询使用显式的 ingest、query 动作。`npm run acceptance` 在临时目录中验证本地来源读取、首批导入、重启回读、重放与业务查询，完成后清理临时状态。
+
+## 多源可追溯服务值（src/rainfall）
+
+在既有单源导入之外新增一层“服务值选择”，把自建传感器与公开气象页面接入同一份农事提示，但不合并观测口径：
+
+- **口径即身份**：序列键为站点/时段结束/时长/指标/单位。网页 `rainfall-estimate` 与传感器 `rainfall-total` 时间相同也不兼容，分属不同序列，网页估值永远不会覆盖传感器原值；来源优先级只在同口径候选之间生效。
+- **版本化入库**：`ObservationStore`（`var/rainfall/observations.json`）为每个 observationId 保存只追加版本历史，含接收时刻、来源路由、ETag 与内容签名；304 与签名重复不产生新版本，撤回与晚到修订都产生新版本并保留旧版本。
+- **校准不猜测**：`CalibrationCatalog` 只对来源/指标/单位匹配且满足生效时间的观测应用其引用版本（`fixtures/calibrations.json` 含 c1/c2）；未知版本或范围不匹配保留原值并标因，不会因目录升级而隐式换版本。
+- **不确定性显式化**：服务值（`evaluateServiceValues`）输出 ok/uncertain/withdrawn/absent 与不确定性原因；撤回、空值、来源故障（503/断连只记可用性事件）、未到达口径一律 `value=null`、`zeroAssumed=false`，绝不把来源缺失当成零降雨。
+- **已发依据不可变**：`ForecastLedger`（`var/rainfall/forecasts.jsonl`，只追加 JSONL）固化发出时刻的观测签名、原值与校准版本；之后的撤回、晚到、校准升级只重新评估当前服务值，`verify` 给出 unchanged/superseded 核对结论，不改写历史；null 服务值拒绝下发。
+
+命令：`npm run rainfall -- --help`（collect/evaluate/issue/service-values/verify），状态默认在 `var/rainfall/`。`npm run rainfall:demo` 演示首采→晚到修订→撤回→晚到替换→依据核对的完整过程；`npm run rainfall:acceptance` 在临时目录中做九步验收（含重启回读与 ETag 恢复），结束自动清理。测试位于 `test/rainfall/`，不访问外网。
+
